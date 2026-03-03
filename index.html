@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">Catálogo digital</h1>
+      <form class="search" role="search" aria-label="Pesquisar produtos">
+        <input type="search" placeholder="Pesquisar produtos..." />
+      </form>
+      <div class="header-actions">
+        <button id="cart-button" class="cart-button" aria-label="Abrir carrinho">
+          Ver carrinho <span></span>
+        </button>
+      
+      </div>
+    </div>
+  </header>
+
+  <div id="cart-backdrop" class="cart-backdrop hidden" aria-hidden="true"></div>
+  <aside id="cart-drawer" class="cart-drawer hidden" aria-hidden="true">
+    <header class="cart-header">
+      <h3>Seu carrinho</h3>
+      <button id="close-cart" aria-label="Fechar carrinho">×</button>
+    </header>
+    <div id="cart-items" class="cart-items">
+      <p class="muted">Carrinho vazio</p>
+    </div>
+    <footer class="cart-footer">
+      <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+      <button id="checkout" class="btn">Fechar pedido</button>
+    </footer>
+  </aside>
+
+  <main class="container main-grid">
+    <aside class="filters">
+      <h2>Filtrar</h2>
+      <div class="filter-group">
+        <label>Categoria</label>
+        <select>
+          <option>Todas</option>
+          <option>Vestidos</option>
+          <option>Calças</option>
+          <option>T-Shirts</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Preço</label>
+        <select>
+          <option>Todos</option>
+          <option>R$ 0 - R$ 100</option>
+          <option>R$ 100 - R$ 500</option>
+        </select>
+      </div>
+    </aside>
+
+    <section class="catalog">
+      <div class="catalog-grid">
+        <!-- Cartão de produto -->
+        <article class="card" data-id="1" data-name="Produto Exemplo A" data-price="199.9" data-desc="Breve descrição do produto para mostrar o layout do catálogo.">
+          <div class="card-media" aria-hidden="true">
+            Exemplo
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Produto Exemplo A</h3>
+            <p class="card-desc">Breve descrição do produto para mostrar o layout do catálogo.</p>
+            <div class="card-meta">
+              <span class="price">R$ 199,90</span>
+              <button class="btn btn-detail" type="button">Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-id="2" data-price="59.0">
+          <div class="card-media" aria-hidden="true">
+            Exemplo
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Produto Exemplo B</h3>
+            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <div class="card-meta">
+              <span class="price">R$ 59,00</span>
+              <button class="btn btn-detail" type="button">Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-id="3" data-name="Produto Exemplo C" data-price="329.0" data-desc="Descrição curta que cabe em duas linhas.">
+          <div class="card-media" aria-hidden="true">
+            Exemplo
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Produto Exemplo C</h3>
+            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <div class="card-meta">
+              <span class="price">R$ 329,00</span>
+              <button class="btn btn-detail" type="button">Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-id="3" data-name="Produto Exemplo D" data-price="329.0" data-desc="Descrição curta que cabe em duas linhas.">
+          <div class="card-media" aria-hidden="true">
+            Exemplo
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Produto Exemplo D</h3>
+            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <div class="card-meta">
+              <span class="price">R$ 149,00</span>
+              <button class="btn btn-detail" type="button">Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-id="3" data-name="Produto Exemplo E" data-price="329.0" data-desc="Descrição curta que cabe em duas linhas.">
+          <div class="card-media" aria-hidden="true">
+            Exemplo
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Produto Exemplo E</h3>
+            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <div class="card-meta">
+              <span class="price">R$ 49,00</span>
+              <button class="btn btn-detail" type="button">Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+        <article class="card" >
+          <div class="card-media" aria-hidden="true">
+            Exemplo
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Produto Exemplo F</h3>
+            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <div class="card-meta">
+              <span class="price">R$ 89,00</span>
+              <button class="btn btn-detail" type="button">Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2026 Catálogo Digital — Template simples</small>
+    </div>
+  </footer>
+  <!-- Modal de produto -->
+  <div id="product-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Detalhes do produto">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <div class="modal-grid">
+        <div class="modal-media" id="modal-media">Exemplo</div>
+        <div class="modal-body">
+          <h2 id="modal-title">Título do produto</h2>
+          <p id="modal-desc">Descrição longa do produto.</p>
+
+          <div class="option-group">
+            <label for="modal-size">Tamanho</label>
+            <select id="modal-size">
+              <option value="P">P</option>
+              <option value="M" selected>M</option>
+              <option value="G">G</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label for="modal-color">Cor</label>
+            <select id="modal-color">
+              <option value="branca">Branca</option>
+              <option value="azul" selected>Azul</option>
+              <option value="rosa">Rosa</option>
+            </select>
+          </div>
+
+          <div class="modal-meta">
+            <span class="modal-price" id="modal-price">R$ 0,00</span>
+            <div class="modal-actions">
+              <button id="add-to-cart" class="btn">Adicionar ao carrinho</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
