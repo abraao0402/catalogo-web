@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -20,9 +20,8 @@
       </form>
       <div class="header-actions">
         <button id="cart-button" class="cart-button" aria-label="Abrir carrinho">
-          Ver carrinho <span></span>
+          Ver carrinho <span id="cart-count" class="cart-badge">0</span>
         </button>
-      
       </div>
     </div>
   </header>
@@ -77,11 +76,12 @@
             <div class="card-meta">
               <span class="price">R$ 199,90</span>
               <button class="btn btn-detail" type="button">Ver detalhes</button>
+              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
             </div>
           </div>
         </article>
 
-        <article class="card" data-id="2" data-price="59.0">
+        <article class="card" data-id="2" data-name="Produto Exemplo B" data-price="59.0" data-desc="Descrição curta que cabe em duas linhas.">
           <div class="card-media" aria-hidden="true">
             Exemplo
           </div>
@@ -91,6 +91,7 @@
             <div class="card-meta">
               <span class="price">R$ 59,00</span>
               <button class="btn btn-detail" type="button">Ver detalhes</button>
+              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
             </div>
           </div>
         </article>
@@ -105,10 +106,13 @@
             <div class="card-meta">
               <span class="price">R$ 329,00</span>
               <button class="btn btn-detail" type="button">Ver detalhes</button>
+              <button class="btn btn-add-cart" type="button">
+                Adicionar ao carrinho
+              </button>
             </div>
           </div>
         </article>
-        <article class="card" data-id="3" data-name="Produto Exemplo D" data-price="329.0" data-desc="Descrição curta que cabe em duas linhas.">
+        <article class="card" data-id="4" data-name="Produto Exemplo D" data-price="149.0" data-desc="Descrição curta que cabe em duas linhas.">
           <div class="card-media" aria-hidden="true">
             Exemplo
           </div>
@@ -118,10 +122,11 @@
             <div class="card-meta">
               <span class="price">R$ 149,00</span>
               <button class="btn btn-detail" type="button">Ver detalhes</button>
+              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
             </div>
           </div>
         </article>
-        <article class="card" data-id="3" data-name="Produto Exemplo E" data-price="329.0" data-desc="Descrição curta que cabe em duas linhas.">
+        <article class="card" data-id="5" data-name="Produto Exemplo E" data-price="49.0" data-desc="Descrição curta que cabe em duas linhas.">
           <div class="card-media" aria-hidden="true">
             Exemplo
           </div>
@@ -131,10 +136,11 @@
             <div class="card-meta">
               <span class="price">R$ 49,00</span>
               <button class="btn btn-detail" type="button">Ver detalhes</button>
+              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
             </div>
           </div>
         </article>
-        <article class="card" >
+        <article class="card" data-id="6" data-name="Produto Exemplo F" data-price="89.0" data-desc="Descrição curta que cabe em duas linhas.">
           <div class="card-media" aria-hidden="true">
             Exemplo
           </div>
@@ -144,6 +150,7 @@
             <div class="card-meta">
               <span class="price">R$ 89,00</span>
               <button class="btn btn-detail" type="button">Ver detalhes</button>
+              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
             </div>
           </div>
         </article>
@@ -188,7 +195,7 @@
           <div class="modal-meta">
             <span class="modal-price" id="modal-price">R$ 0,00</span>
             <div class="modal-actions">
-              <button id="add-to-cart" class="btn">Adicionar ao carrinho</button>
+              <button id="add-to-cart" class="btn btn-add-cart" >Adicionar ao carrinho</button>
             </div>
           </div>
         </div>
@@ -197,7 +204,7 @@
   </div>
 
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>

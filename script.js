@@ -22,14 +22,31 @@
   const checkoutBtn = document.getElementById("checkout");
 
   let currentProduct = null;
+  let expandedCard = null;
   const cart = [];
 
-  // abrir modal com dados do card
+  // ações nos cards: ver detalhes ou adicionar direto ao carrinho
   document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".btn-detail");
-    if (btn) {
-      const card = btn.closest(".card");
-      openModalFromCard(card);
+    const detailBtn = e.target.closest(".btn-detail");
+    if (detailBtn) {
+      const card = detailBtn.closest(".card");
+      if (card) openModalFromCard(card);
+      return;
+    }
+
+    const addBtn = e.target.closest(".btn-add-cart");
+    if (addBtn) {
+      const card = addBtn.closest(".card");
+      if (!card) return;
+      const id = card.dataset.id || "";
+      const titleEl = card.querySelector(".card-title");
+      const descEl = card.querySelector(".card-desc");
+      const name = card.dataset.name || (titleEl ? titleEl.textContent : "");
+      const price = Number(card.dataset.price || 0);
+      const desc = card.dataset.desc || (descEl ? descEl.textContent : "");
+      const prod = { id, name, price, desc };
+      adicionarAoCarrinho(prod, {});
+      openCart();
     }
   });
 
@@ -45,6 +62,9 @@
     // reset options to defaults
     if (modalSize) modalSize.value = "M";
     if (modalColor) modalColor.value = "azul";
+    // marcar card como expandido (mostra botão adicionar local)
+    expandedCard = card;
+    card.classList.add("is-expanded");
     modal.classList.remove("hidden");
     modal.setAttribute("aria-hidden", "false");
   }
@@ -61,6 +81,10 @@
     modal.classList.add("hidden");
     modal.setAttribute("aria-hidden", "true");
     currentProduct = null;
+    if (expandedCard) {
+      expandedCard.classList.remove("is-expanded");
+      expandedCard = null;
+    }
   }
 
   // adicionar ao carrinho
@@ -68,14 +92,23 @@
     if (!currentProduct) return;
     const size = modalSize ? modalSize.value : null;
     const color = modalColor ? modalColor.value : null;
-    addToCart(currentProduct, { size, color });
+    adicionarAoCarrinho(currentProduct, { size, color });
     closeModal();
     openCart();
   });
+  function abrirModalProduto(prod) {
+    currentProduct = prod;
 
-  function addToCart(prod, opts = {}) {
+    document.getElementById("modal-title").innerText = prod.name;
+    document.getElementById("modal-desc").innerText = prod.description;
+    document.getElementById("modal-price").innerText = prod.price;
+  }
+
+  function adicionarAoCarrinho(prod, opts = {}) {
     const key = `${prod.id}::${opts.size || ""}::${opts.color || ""}`;
+
     const existing = cart.find((i) => i.key === key);
+
     if (existing) {
       existing.qty += 1;
     } else {
@@ -87,9 +120,9 @@
         key,
       });
     }
+
     renderCart();
   }
-
   function renderCart() {
     // atualizar badge e lista
     const count = cart.reduce((s, i) => s + i.qty, 0);
