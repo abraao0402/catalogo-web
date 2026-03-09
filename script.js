@@ -20,6 +20,7 @@
   const cartTotalEl = document.getElementById("cart-total");
   const closeCartBtn = document.getElementById("close-cart");
   const checkoutBtn = document.getElementById("checkout");
+  const whatsappBtn = document.getElementById("whatsapp-order");
 
   let currentProduct = null;
   let expandedCard = null;
@@ -87,15 +88,17 @@
     }
   }
 
-  // adicionar ao carrinho
-  addToCartBtn.addEventListener("click", () => {
-    if (!currentProduct) return;
-    const size = modalSize ? modalSize.value : null;
-    const color = modalColor ? modalColor.value : null;
-    adicionarAoCarrinho(currentProduct, { size, color });
-    closeModal();
-    openCart();
-  });
+  // adicionar ao carrinho (botão do modal)
+  if (addToCartBtn) {
+    addToCartBtn.addEventListener("click", () => {
+      if (!currentProduct) return;
+      const size = modalSize ? modalSize.value : null;
+      const color = modalColor ? modalColor.value : null;
+      adicionarAoCarrinho(currentProduct, { size, color });
+      closeModal();
+      openCart();
+    });
+  }
   function abrirModalProduto(prod) {
     currentProduct = prod;
 
@@ -189,16 +192,44 @@
   }
 
   // checkout simulado
-  checkoutBtn.addEventListener("click", () => {
-    if (cart.length === 0) {
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", () => {
+      if (cart.length === 0) {
+        alert("Seu carrinho está vazio.");
+        return;
+      }
+      alert("Compra simulada! Total: " + cartTotalEl.textContent);
+      cart.length = 0;
+      renderCart();
+      closeCart();
+    });
+  }
+
+  // enviar pedido por WhatsApp
+  function sendToWhatsapp() {
+    if (!cart || cart.length === 0) {
       alert("Seu carrinho está vazio.");
       return;
     }
-    alert("Compra simulada! Total: " + cartTotalEl.textContent);
-    cart.length = 0;
-    renderCart();
-    closeCart();
-  });
+    const phone = "5585998500186"; // substitua pelo número desejado (inclua código país)
+    let total = 0;
+    let mensagem = "Olá, gostaria de fazer um pedido:\n";
+    cart.forEach((item) => {
+      total += item.price * item.qty;
+      let line = `${item.qty}x ${item.name}`;
+      if (item.size) line += ` • Tamanho: ${item.size}`;
+      if (item.color) line += ` • Cor: ${item.color}`;
+      line += ` • ${toBRL(item.price)}`;
+      mensagem += line + "\n";
+    });
+    mensagem += `\nTotal: ${toBRL(total)}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, "_blank");
+  }
+
+  if (whatsappBtn) {
+    whatsappBtn.addEventListener("click", sendToWhatsapp);
+  }
 
   // init
   renderCart();

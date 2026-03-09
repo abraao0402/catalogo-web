@@ -20,7 +20,6 @@ header {
   background-color: #0d6efd;
 }
 
-
 .site-header .cart-button {
   background: transparent;
   border: none;
@@ -41,7 +40,6 @@ header {
   display: flex;
   align-items: center;
 }
-
 
 @media (max-width: 720px) {
   .site-header .container {
