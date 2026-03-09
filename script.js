@@ -20,7 +20,6 @@
   const cartTotalEl = document.getElementById("cart-total");
   const closeCartBtn = document.getElementById("close-cart");
   const checkoutBtn = document.getElementById("checkout");
-  const whatsappBtn = document.getElementById("whatsapp-order");
 
   let currentProduct = null;
   let expandedCard = null;
@@ -198,7 +197,19 @@
         alert("Seu carrinho está vazio.");
         return;
       }
-      alert("Compra simulada! Total: " + cartTotalEl.textContent);
+      // calcular total a partir do carrinho e verificar se é válido
+      const total = cart.reduce(
+        (s, i) => s + (Number(i.price) || 0) * (i.qty || 1),
+        0,
+      );
+      if (total == null || isNaN(total) || total <= 0) {
+        alert("Valor do pedido inválido.");
+        return;
+      }
+      // enviar mensagem via WhatsApp antes do fechamento
+      sendToWhatsapp();
+      // manter comportamento de fechamento simulado
+      alert("Compra simulada! Total: " + toBRL(total));
       cart.length = 0;
       renderCart();
       closeCart();
@@ -227,9 +238,8 @@
     window.open(url, "_blank");
   }
 
-  if (whatsappBtn) {
-    whatsappBtn.addEventListener("click", sendToWhatsapp);
-  }
+  // NOTE: botão de WhatsApp foi removido do HTML; a função sendToWhatsapp
+  // continua sendo chamada pelo fluxo de `checkout`.
 
   // init
   renderCart();
