@@ -222,7 +222,7 @@
       alert("Seu carrinho está vazio.");
       return;
     }
-    const phone = "5585998500186"; // substitua pelo número desejado (inclua código país)
+    const phone = "558592463128"; // substitua pelo número desejado (inclua código país)
     let total = 0;
     let mensagem = "Olá, gostaria de fazer um pedido:\n";
     cart.forEach((item) => {
