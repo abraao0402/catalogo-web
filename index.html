@@ -4,28 +4,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Catálogo Digital</title>
+  <title>Loja Deusa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
   <header class="site-header">
     <div class="container">
-      <h1 class="logo">Catálogo digital</h1>
+      <h1 class="logo" id="logo-reset">Deusa</h1>
       <form class="search" role="search" aria-label="Pesquisar produtos">
-        <input type="search" placeholder="Pesquisar produtos..." />
+        <input id="search-input" type="search" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos" />
       </form>
       <div class="header-actions">
         <button id="cart-button" class="cart-button" aria-label="Abrir carrinho">
-          Ver carrinho <span id="cart-count" class="cart-badge">0</span>
+          <span><img src="imgs/icons/adicionar-sacola-de-compras.svg" alt="icone de carrinho de compras" width="25"></span> <span id="cart-count">0</span>
         </button>
       </div>
     </div>
   </header>
 
+  <!--Carrinho-->
   <div id="cart-backdrop" class="cart-backdrop hidden" aria-hidden="true"></div>
   <aside id="cart-drawer" class="cart-drawer hidden" aria-hidden="true">
     <header class="cart-header">
@@ -42,117 +46,125 @@
       </div>
     </footer>
   </aside>
-
+<!--Filtro-->
   <main class="container main-grid">
     <aside class="filters">
       <h2>Filtrar</h2>
       <div class="filter-group">
         <label>Categoria</label>
-        <select>
+        <select id="filter-category">
           <option>Todas</option>
           <option>Vestidos</option>
           <option>Calças</option>
-          <option>T-Shirts</option>
+          <option>Blusas</option>
         </select>
       </div>
       <div class="filter-group">
         <label>Preço</label>
-        <select>
+        <select id="filter-price">
           <option>Todos</option>
           <option>R$ 0 - R$ 100</option>
           <option>R$ 100 - R$ 500</option>
         </select>
       </div>
     </aside>
-
+<!--Grid de Produtos-->
     <section class="catalog">
       <div class="catalog-grid">
         <!-- Cartão de produto -->
-        <article class="card" data-id="1" data-name="Produto Exemplo A" data-price="199.9" data-desc="Breve descrição do produto para mostrar o layout do catálogo.">
-          <div class="card-media" aria-hidden="true">
-            Exemplo
-          </div>
+        <article class="card" data-id="1" data-category="Vestidos" data-name="Vestido Verde Leve" data-price="199.9" data-desc="Vestido leve e confortável em verde." data-images="imgs/produtos/vestidos/vestido-verde-pequeno.jpg, imgs/produtos/vestidos/vestido-verde-pequeno.jpg, imgs/produtos/vestidos/vestido-verde-pequeno.jpg">
+          <div class="card-media" aria-hidden="true"></div>
           <div class="card-body">
-            <h3 class="card-title">Produto Exemplo A</h3>
-            <p class="card-desc">Breve descrição do produto para mostrar o layout do catálogo.</p>
+            <h3 class="card-title">Vestido Verde Leve</h3>
+            <div class="card-sizes" aria-label="Tamanhos disponíveis">
+              <span>P</span><span>M</span><span>G</span>
+            </div>
             <div class="card-meta">
               <span class="price">R$ 199,90</span>
-              <button class="btn btn-detail" type="button">Ver detalhes</button>
-              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
+              <button class="btn btn-add-cart" type="button">Adicionar à sacola</button>
             </div>
           </div>
         </article>
 
-        <article class="card" data-id="2" data-name="Produto Exemplo B" data-price="59.0" data-desc="Descrição curta que cabe em duas linhas.">
-          <div class="card-media" aria-hidden="true">
-            Exemplo
-          </div>
+        <article class="card" data-id="2" data-category="Blusas" data-name="Blusa Branca Leve" data-price="59.0" data-desc="Blusa leve e casual para o dia dia" data-images="imgs/produtos/blusas/blusa-branca.jpg, imgs/produtos/blusas/blusa-branca.jpg">
+          <div class="card-media" aria-hidden="true"></div>
           <div class="card-body">
-            <h3 class="card-title">Produto Exemplo B</h3>
-            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <h3 class="card-title">Blusa branca leve</h3>
+            <div class="card-sizes" aria-label="Tamanhos disponíveis">
+              <span>P</span><span>M</span><span>G</span>
+            </div>
             <div class="card-meta">
               <span class="price">R$ 59,00</span>
-              <button class="btn btn-detail" type="button">Ver detalhes</button>
-              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
+              <button class="btn btn-add-cart" type="button">Adicionar à sacola</button>
             </div>
           </div>
         </article>
 
-        <article class="card" data-id="3" data-name="Produto Exemplo C" data-price="329.0" data-desc="Descrição curta que cabe em duas linhas.">
-          <div class="card-media" aria-hidden="true">
-            Exemplo
-          </div>
+        <article class="card" data-id="3" data-category="Calças" data-name="Calça jeans" data-price="329.0" data-desc="Calça Jeans Básica" data-images="imgs/produtos/calcas/calca-pequena.jpg, imgs/produtos/calcas/calca-pequena.jpg, imgs/produtos/calcas/calca-pequena.jpg">
+          <div class="card-media" aria-hidden="true"></div>
           <div class="card-body">
-            <h3 class="card-title">Produto Exemplo C</h3>
-            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <h3 class="card-title">Calça Jeans Básica</h3>
+            <div class="card-sizes" aria-label="Tamanhos disponíveis">
+              <span>P</span><span>M</span><span>G</span>
+            </div>
             <div class="card-meta">
               <span class="price">R$ 329,00</span>
-              <button class="btn btn-detail" type="button">Ver detalhes</button>
-              <button class="btn btn-add-cart" type="button">
-                Adicionar ao carrinho
-              </button>
+              <button class="btn btn-add-cart" type="button">Adicionar à sacola</button>
             </div>
           </div>
         </article>
-        <article class="card" data-id="4" data-name="Produto Exemplo D" data-price="149.0" data-desc="Descrição curta que cabe em duas linhas.">
-          <div class="card-media" aria-hidden="true">
-            Exemplo
-          </div>
+        
+                <article class="card" data-id="4" data-category="Vestidos" data-name="Vestido Verde Leve" data-price="199.9" data-desc="Vestido leve e confortável em verde." data-images="imgs/produtos/vestidos/vestido-verde-pequeno.jpg, imgs/produtos/vestidos/vestido-verde-pequeno.jpg, imgs/produtos/vestidos/vestido-verde-pequeno.jpg">
+          <div class="card-media" aria-hidden="true"></div>
           <div class="card-body">
-            <h3 class="card-title">Produto Exemplo D</h3>
-            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <h3 class="card-title">Vestido Verde Leve</h3>
+            <div class="card-sizes" aria-label="Tamanhos disponíveis">
+              <span>P</span><span>M</span><span>G</span>
+            </div>
             <div class="card-meta">
-              <span class="price">R$ 149,00</span>
-              <button class="btn btn-detail" type="button">Ver detalhes</button>
-              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
+              <span class="price">R$ 199,90</span>
+              <button class="btn btn-add-cart" type="button">Adicionar à sacola</button>
             </div>
           </div>
         </article>
-        <article class="card" data-id="5" data-name="Produto Exemplo E" data-price="49.0" data-desc="Descrição curta que cabe em duas linhas.">
-          <div class="card-media" aria-hidden="true">
-            Exemplo
-          </div>
+
+        <article class="card" data-id="5" data-category="Blusas" data-name="Blusa Branca Leve" data-price="59.0" data-desc="Blusa leve e casual para o dia dia" data-images="imgs/produtos/blusas/blusa-branca.jpg, imgs/produtos/blusas/blusa-branca.jpg">
+          <div class="card-media" aria-hidden="true"></div>
           <div class="card-body">
-            <h3 class="card-title">Produto Exemplo E</h3>
-            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <h3 class="card-title">Blusa branca leve</h3>
+            <div class="card-sizes" aria-label="Tamanhos disponíveis">
+              <span>P</span><span>M</span><span>G</span>
+            </div>
             <div class="card-meta">
-              <span class="price">R$ 49,00</span>
-              <button class="btn btn-detail" type="button">Ver detalhes</button>
-              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
+              <span class="price">R$ 59,00</span>
+              <button class="btn btn-add-cart" type="button">Adicionar à sacola</button>
             </div>
           </div>
         </article>
-        <article class="card" data-id="6" data-name="Produto Exemplo F" data-price="89.0" data-desc="Descrição curta que cabe em duas linhas.">
-          <div class="card-media" aria-hidden="true">
-            Exemplo
-          </div>
+
+        <article class="card" data-id="6" data-category="Calças" data-name="Calça jeans" data-price="329.0" data-desc="Calça Jeans Básica" data-images="imgs/produtos/calcas/calca-pequena.jpg, imgs/produtos/calcas/calca-pequena.jpg, imgs/produtos/calcas/calca-pequena.jpg">
+          <div class="card-media" aria-hidden="true"></div>
           <div class="card-body">
-            <h3 class="card-title">Produto Exemplo F</h3>
-            <p class="card-desc">Descrição curta que cabe em duas linhas.</p>
+            <h3 class="card-title">Calça Jeans Básica</h3>
+            <div class="card-sizes" aria-label="Tamanhos disponíveis">
+              <span>P</span><span>M</span><span>G</span>
+            </div>
             <div class="card-meta">
-              <span class="price">R$ 89,00</span>
-              <button class="btn btn-detail" type="button">Ver detalhes</button>
-              <button class="btn btn-add-cart" type="button">Adicionar ao carrinho</button>
+              <span class="price">R$ 329,00</span>
+              <button class="btn btn-add-cart" type="button">Adicionar à sacola</button>
+            </div>
+          </div>
+        </article>
+        <article class="card" data-id="7" data-category="Calças" data-name="Exemplo" data-price="0.0" data-desc="Exemplo" data-images="">
+          <div class="card-media" aria-hidden="true"></div>
+          <div class="card-body">
+            <h3 class="card-title">Exemplo</h3>
+            <div class="card-sizes" aria-label="Tamanhos disponíveis">
+              <span>P</span><span>M</span><span>G</span>
+            </div>
+            <div class="card-meta">
+              <span class="price">R$ 0,00</span>
+              <button class="btn btn-add-cart" type="button">Adicionar à sacola</button>
             </div>
           </div>
         </article>
@@ -197,7 +209,7 @@
           <div class="modal-meta">
             <span class="modal-price" id="modal-price">R$ 0,00</span>
             <div class="modal-actions">
-              <button id="add-to-cart" class="btn btn-add-cart">Adicionar ao carrinho</button>
+              <button id="add-to-cart" class="btn btn-add-cart">Comprar</button>
             </div>
           </div>
         </div>
